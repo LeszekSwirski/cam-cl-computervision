@@ -2,4 +2,4 @@
 
 export DIR="$( cd "$( dirname "{BASH_SOURCE[0]}" )" && pwd )"
 
-gnome-terminal --working-directory "$DIR" --command "python exercise1.py; read -p 'Press Enter to continue...'\""
+gnome-terminal --working-directory "$DIR" --command "bash -c \"python exercise1.py; read -p 'Press Enter to continue...'\""
