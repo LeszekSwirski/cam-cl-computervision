@@ -217,7 +217,7 @@ def normalise_pos(image):
 def normalise(image):
   'Normalises the image so that the values lie from 0 to 1.'
 
-  if image.min() != 0 or image.max() != 0:git init
+  if image.min() != 0 or image.max() != 0:
     output = image * 0.5 / max(image.max(), -image.min())
   else:
     output = np.zeros_like(image)
