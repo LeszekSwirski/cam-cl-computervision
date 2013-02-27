@@ -52,7 +52,7 @@ def calculate_size(size_image1, size_image2, homography):
   ## Calculate the size and offset of the stitched panorama.
   ## TODO: (Overwrite the following 2 lines with your answer.)
   offset = (10, 10)
-  size   = (1600, 600)
+  size   = (1400, 800)
   
   ## Update the homography to shift by the offset
   homography[0,2] += offset[0]
