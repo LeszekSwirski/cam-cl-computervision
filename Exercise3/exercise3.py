@@ -3,7 +3,7 @@ import cv2, numpy as np
 
 ## ---------------------------------------------------------------------
 ## 3.1  Extract SURF keypoints and descriptors from an image. ----------
-def extract_features_and_descriptors(image, surfThreshold=1000):
+def extract_features_and_descriptors(image):
 
   ## Convert image to grayscale (for SURF detector).
   ## TODO: 
