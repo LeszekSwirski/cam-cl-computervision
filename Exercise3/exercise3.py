@@ -1,8 +1,8 @@
 # coding: utf-8
 import cv2, numpy as np
 
-## -------------------------------------------------------------------
-## 1. Extract SURF keypoints and descriptors from an image. ----------
+## ---------------------------------------------------------------------
+## 3.1  Extract SURF keypoints and descriptors from an image. ----------
 def extract_features_and_descriptors(image, surfThreshold=1000):
 
   ## Convert image to grayscale (for SURF detector).
@@ -15,7 +15,7 @@ def extract_features_and_descriptors(image, surfThreshold=1000):
   
   return (keypoints, descriptors)
   
-## -------------------------------------------------------------------
+## --------------------------------------------------------------------
 def detect_features(grey_image):
   surf = cv2.FeatureDetector_create("SURF")
   surf.setDouble("hessianThreshold", 1000)
@@ -26,8 +26,8 @@ def extract_descriptors(grey_image, keypoints):
   return surf.compute(grey_image, keypoints)[1]
   
 
-## -------------------------------------------------------------------
-## 2. Find corresponding features between the images. ----------------
+## --------------------------------------------------------------------
+## 3.2 Find corresponding features between the images. ----------------
 def find_correspondences(keypoints1, descriptors1, keypoints2, descriptors2):
 
   ## Find corresponding features.
@@ -45,8 +45,8 @@ def find_correspondences(keypoints1, descriptors1, keypoints2, descriptors2):
   return (points1, points2)
 
 
-## -------------------------------------------------------------------
-## 3. Calculate the size and offset of the stitched panorama. --------
+## ---------------------------------------------------------------------
+## 3.3  Calculate the size and offset of the stitched panorama. --------
 def calculate_size(size_image1, size_image2, homography):
   
   ## Calculate the size and offset of the stitched panorama.
@@ -61,7 +61,8 @@ def calculate_size(size_image1, size_image2, homography):
   return (size, offset)
 
 
-## 4. Combine images into a panorama. [4] --------------------------------
+## ---------------------------------------------------------------------
+## 3.4  Combine images into a panorama. --------------------------------
 def merge_images(image1, image2, homography, size, offset, keypoints):
 
   ## Combine the two images into one.
