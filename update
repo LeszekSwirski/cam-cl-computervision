@@ -2,4 +2,4 @@
 
 export DIR="$( cd "$( dirname "{BASH_SOURCE[0]}" )" && pwd )"
 
-gnome-terminal --working-directory $DIR --command "bash -c \"git pull --rebase; echo ''; echo 'Update finished!' ;read -p 'Press Enter to continue...'\""
+gnome-terminal --working-directory $DIR --command "bash -c \"git stash; git pull --rebase; git stash pop; echo ''; echo 'Update finished!' ;read -p 'Press Enter to continue...'\""
