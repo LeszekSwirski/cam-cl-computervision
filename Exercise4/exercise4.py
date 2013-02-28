@@ -33,14 +33,15 @@ def printConfusionMatrix(predictions, actual):
   
   numClasses = int(np.max(actual) - np.min(actual) + 1);
   print "Confusion matrix for %i classes:" % numClasses
-  print "".join("\t%4s" % letters[i] for i in range(numClasses))
+  print "",
+  print "".join("   %4s" % letters[i] for i in range(numClasses))
   
   for i in range(numClasses):
     print letters[i],
     
     for j in range(numClasses):
       predictedClass = predictions[actual == i]
-      print "\t%4i" % sum(predictedClass == j),
+      print "  %4i" % sum(predictedClass == j),
     print
 
 def calculateMeanF1(predictions, actual):
