@@ -18,8 +18,8 @@ def basic_convolution(image, kernel, verbose=False):
   (mend, nend) = kernel.shape
   
   # Iterate over all pixels in the image
-  for i in range(mend, iend):
-    for j in range(nend, jend):
+  for i in range(mend - 1, iend):
+    for j in range(nend - 1, jend):
         ## TODO
         ## Implement convolution here
         result[i][j] = 0
