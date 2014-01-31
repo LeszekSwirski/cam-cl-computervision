@@ -81,6 +81,18 @@ def show(name, im):
   cv2.namedWindow(name)
   cv2.imshow(name, im)
   cv2.waitKey(1)
+  
+def are_similar(image, answer):
+  if image.shape != answer.shape:
+    return False
+  diff = image - answer
+  if np.max(np.abs(diff)) > 0.05:
+    # Maximum 5% per-pixel difference
+    return False
+  if np.average(np.abs(diff)) > 0.01:
+    # Maximum 1% average pixel difference
+    return False
+  return True
 
 if __name__ == '__main__':
 
@@ -135,7 +147,7 @@ if __name__ == '__main__':
   ## Check the answers
   
   result1_correct = cv2.imread(os.path.expanduser("answer-images/image-basic_convolution.png"), 0) / 255.0
-  if result1.shape == result1_correct.shape and np.all(np.abs(result1 - result1_correct) < 0.01):
+  if are_similar(result1, result1_correct):
     print "Exercise 1.1: CORRECT"
   else:
     print "Exercise 1.1: INCORRECT"
@@ -145,7 +157,7 @@ if __name__ == '__main__':
       print "    The size is incorrect. The result should be the same size as the input"
       
   result2_correct = cv2.imread(os.path.expanduser("answer-images/image-padded_convolution.png"), 0) / 255.0
-  if result2.shape == result2_correct.shape and np.all(np.abs(result2 - result2_correct) < 0.01):
+  if are_similar(result2, result2_correct):
     print "Exercise 1.2: CORRECT"
   else:
     print "Exercise 1.2: INCORRECT"
@@ -155,7 +167,7 @@ if __name__ == '__main__':
       print "    The size is incorrect. The result should be the same size as the input"
       
   result3_correct = cv2.imread(os.path.expanduser("answer-images/image-basic_convolution-dft.png"), 0) / 255.0
-  if result3.shape == result3_correct.shape and np.all(np.abs(result3 - result3_correct) < 0.01):
+  if are_similar(result3, result3_correct):
     print "Exercise 1.3: CORRECT"
   else:
     print "Exercise 1.3: INCORRECT"
@@ -163,7 +175,7 @@ if __name__ == '__main__':
       print "    The size is incorrect. The result should be the same size as the input"
       
   result4_correct = cv2.imread(os.path.expanduser("answer-images/image-padded_convolution-dft.png"), 0) / 255.0
-  if result4.shape == result4_correct.shape and np.all(np.abs(result4 - result4_correct) < 0.01):
+  if are_similar(result4, result4_correct):
     print "Exercise 1.4: CORRECT"
   else:
     print "Exercise 1.4: INCORRECT"
