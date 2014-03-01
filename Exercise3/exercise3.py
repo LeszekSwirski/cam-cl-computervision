@@ -164,7 +164,7 @@ if __name__ == "__main__":
   print len(keypoints2), "features detected in image2"
   
   show("Image1 features", cv2.drawKeypoints(image1, keypoints1, color=(0,0,255)))
-  show("Image2 features", cv2.drawKeypoints(image1, keypoints1, color=(0,0,255)))
+  show("Image2 features", cv2.drawKeypoints(image2, keypoints1, color=(0,0,255)))
   
   ## Find corresponding features.
   points1, points2 = find_correspondences(keypoints1, descriptors1, keypoints2, descriptors2)
